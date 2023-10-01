@@ -1,12 +1,12 @@
 import React, { useEffect } from "react"
-import useViewModel from "./ViewModel"
 import List from "../../../components/List"
 import Button from "../../../components/Button"
 import { useNavigate } from "react-router-dom";
+import DI from '../../../../DI/ioc'
 
 export default function ProductList() {
     let navigate = useNavigate();
-    const { products, getProducts, goToAddProduct, goToProductDetail } = useViewModel();
+    const { products, getProducts } = DI.resolve("ProductListViewModel")
 
     useEffect(() => {
         getProducts()

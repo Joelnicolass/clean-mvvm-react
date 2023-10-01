@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
-import useViewModel from "./ViewModel"
 import Button from "../../../components/Button"
 import TextInput from "../../../components/TextInput"
 import { useNavigate, useParams } from "react-router-dom";
+import DI from '../../../../DI/ioc'
 
 
 export default function ProductDetail() {
     let navigate = useNavigate();
     let { id } = useParams();
-    const { name, price, getProduct, onChange, updateProduct, deleteProduct } = useViewModel();
+    const { name, price, getProduct, onChange, updateProduct, deleteProduct } = DI.resolve("ProductDetailViewModel")
 
     useEffect(() => {
         getProduct(id)
